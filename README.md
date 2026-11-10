@@ -1,142 +1,91 @@
-# Role Explorer — Sekolah Karir (Paid Internship Batch 2)
+# Role Explorer: Sekolah Karir (Paid Internship Batch 2)
 
-> **Front-End Engineer Mini Assignment**  
-> Dibuat sebagai bagian dari seleksi **Paid Internship Batch 2 di Sekolah Karir**.
+Mini assignment seleksi posisi Front-End Engineer di Sekolah Karir.
 
----
+## Ringkasan Tugas
 
-## 📌 Ringkasan Tugas & Solusi
+Proyek ini mengimplementasikan komponen penjelajah peran (role explorer) responsif sesuai instruksi brief:
+- Filter lowongan berdasarkan departemen.
+- Menampilkan tiga kondisi tampilan: kondisi default, hasil filter, dan kondisi kosong jika pencarian tidak menemukan hasil.
+- Data menggunakan mock data lokal tanpa backend.
+- Komponen dirancang responsif untuk tampilan layar ponsel hingga desktop.
 
-Aplikasi ini adalah implementasi dari komponen **Responsive Role Explorer** yang memungkinkan pengguna mencari dan memfilter lowongan peran (*roles*) berdasarkan departemen di Sekolah Karir.
+## State Handling dan Logika Komponen
 
-### 🌟 Fitur Utama & State Handling
-1. **Default State**:
-   - Menampilkan seluruh lowongan yang tersedia (total 10 posisi pada 5 departemen).
-   - Menyajikan ringkasan statistik (jumlah posisi terbuka, jumlah departemen, mode kerja Remote/Hybrid).
-2. **Filtered State**:
-   - Filter departemen interaktif menggunakan tombol tab/chips (*Engineering*, *Product & Design*, *Curriculum & Learning*, *Marketing & Growth*, *People & Operations*).
-   - Dilengkapi *live search bar* untuk mencari peran berdasarkan judul, kata kunci skill (misal: *React*, *Figma*, *Node.js*), atau deskripsi.
-   - Sinkronisasi **URL Query Parameters** (`?department=Engineering`), sehingga status filter dapat dibagikan (*shareable link*) dan di-*bookmark*.
-   - Badge counter dinamis pada setiap tombol departemen.
-3. **Empty State**:
-   - Ditampilkan secara dinamis jika tidak ada posisi yang cocok dengan departemen atau kata kunci pencarian.
-   - Memberikan pesan kontekstual yang jelas serta tombol aksi **"Reset Semua Filter"** yang mengembalikan state ke tampilan default dalam satu klik.
-4. **UX & Micro-interactions Tambahan**:
-   - **Role Detail Modal**: Dialog modal untuk melihat detail tanggung jawab, kualifikasi, dan keahlian yang dibutuhkan secara lengkap. Mendukung penutupan via tombol `Escape`, klik *backdrop*, atau tombol tutup.
-   - **Simulasi Lamaran & Toast Feedback**: Feedback visual cepat saat pengguna menekan tombol "Lamar".
-   - **Desain Responsif**: Grid adaptif (1 kolom di mobile, 2 kolom di tablet, 3 kolom di desktop) dan *touch-friendly horizontal scroll* pada kategori filter mobile.
+Aplikasi menggunakan pendekatan derived state untuk menjaga alur data tetap sederhana dan mudah dilacak:
 
----
+1. State utama:
+   Hanya dua nilai yang disimpan dalam state di `App.tsx`, yaitu kategori departemen yang aktif (`selectedDepartment`) dan teks pencarian (`searchQuery`).
 
-## 🛠️ Tech Stack & Keputusan Arsitektur
+2. Logika penyaringan (Derived State):
+   Daftar lowongan yang tampil dihitung langsung menggunakan `useMemo` berdasarkan kombinasi filter departemen dan teks pencarian. Pendekatan ini menghindari pembuatan state ganda (`useState` + `useEffect`) yang rawan desinkronisasi data.
 
-- **Framework**: [React 19](https://react.dev/) + [Vite 6](https://vite.dev/)
-- **Bahasa**: [TypeScript](https://www.typescriptlang.org/) (Strict typing untuk model data Role dan Department)
-- **Styling**: [Tailwind CSS v4](https://tailwindcss.com/)
-- **Iconography**: [Lucide React](https://lucide.dev/)
-- **Desain Tipografi**: Plus Jakarta Sans
+3. Tiga kondisi tampilan:
+   - Default state: Menampilkan seluruh 10 posisi dari lima departemen saat filter berada pada pilihan "Semua Departemen".
+   - Filtered state: Menampilkan kartu posisi yang sesuai ketika pengguna memilih departemen tertentu atau mengetik kata kunci.
+   - Empty state: Menampilkan komponen `EmptyState` jika tidak ada posisi yang cocok, dilengkapi tombol reset untuk mengembalikan filter ke kondisi awal.
 
-### 📂 Struktur Direktori
+4. Sinkronisasi URL:
+   Departemen yang dipilih disinkronkan ke parameter URL (`?department=Engineering`), sehingga tautan filter dapat dibagikan atau disimpan langsung.
+
+## Catatan Penggunaan AI (Tools & AI Policy)
+
+Bagian ini disertakan sesuai ketentuan brief seleksi Sekolah Karir:
+
+- Tool yang digunakan: Antigravity (Google DeepMind) dan dokumentasi resmi Tailwind CSS.
+- Bagaimana tool membantu:
+  1. Membantu penyusunan data mock peran agar relevan dengan posisi umum di Sekolah Karir (Engineering, Product, Curriculum, Marketing, dan Operations).
+  2. Memberikan referensi atribut aksesibilitas WAI-ARIA (`role="tablist"`, `role="tab"`, `aria-selected`, `aria-modal`) agar tombol filter dan dialog ramah pembaca layar.
+  3. Mempercepat konfigurasi awal proyek React, TypeScript, dan Tailwind CSS.
+- Tanggung jawab teknis: Seluruh baris kode, arsitektur komponen, dan alur penanganan state dipahami oleh kandidat dan siap dijelaskan pada sesi wawancara teknis.
+
+## Struktur Direktori
 
 ```text
 sekolahkarir-mini-test/
 ├── src/
 │   ├── components/
-│   │   ├── Navbar.tsx             # Navigasi atas & branding Sekolah Karir
-│   │   ├── HeroSection.tsx        # Judul, search bar, & statistik ringkas
-│   │   ├── DepartmentFilter.tsx   # Filter tabs berstatus aria-selected & badge count
-│   │   ├── RoleCard.tsx           # Kartu informasi lowongan pekerjaan
-│   │   ├── RoleDetailModal.tsx    # Modal detail lowongan peran & kualifikasi
-│   │   ├── EmptyState.tsx         # Tampilan kosong informatif + tombol reset
-│   │   ├── Toast.tsx              # Notifikasi feedback aksi pengguna
-│   │   └── Footer.tsx             # Footer informasi seleksi
+│   │   ├── Navbar.tsx             # Navigasi atas
+│   │   ├── HeroSection.tsx        # Judul, input pencarian, dan ringkasan angka
+│   │   ├── DepartmentFilter.tsx   # Tombol filter departemen dengan hitungan posisi
+│   │   ├── RoleCard.tsx           # Kartu informasi lowongan
+│   │   ├── RoleDetailModal.tsx    # Modal detail kualifikasi dan tanggung jawab
+│   │   ├── EmptyState.tsx         # Tampilan saat hasil pencarian kosong
+│   │   ├── Toast.tsx              # Notifikasi umpan balik
+│   │   └── Footer.tsx             # Informasi penutup
 │   ├── data/
-│   │   └── mockRoles.ts           # Mock dataset lowongan realistis Sekolah Karir
+│   │   └── mockRoles.ts           # Data mock lowongan
 │   ├── types/
-│   │   └── role.ts                # TypeScript types & interface definitions
-│   ├── App.tsx                    # State management & koordinasi komponen
+│   │   └── role.ts                # Definisi tipe TypeScript
+│   ├── App.tsx                    # Komponen utama dan logika filter
 │   ├── main.tsx                   # Entry point aplikasi
-│   └── index.css                  # Konfigurasi Tailwind CSS v4 & custom scrollbar
+│   └── index.css                  # Konfigurasi Tailwind CSS
 ├── index.html
 ├── package.json
 ├── tsconfig.json
 └── vite.config.ts
 ```
 
----
+## Cara Menjalankan Project
 
-## 🤖 Kepatuhan Tools & AI Policy (Catatan Resmi Penggunaan AI)
-
-Sesuai dengan ketentuan pada dokumen assignment:
-> *"Kamu boleh menggunakan AI tools, internet references, coding/design assistants, atau tools lain yang relevan. Jika menggunakan AI, tambahkan catatan singkat berisi tool yang digunakan dan bagaimana tool tersebut membantu. Kamu tetap harus memahami dan mampu menjelaskan seluruh hasil yang dikumpulkan."*
-
-### 1. Tools yang Digunakan:
-- **Antigravity (Google DeepMind Coding Assistant)**
-- **Tailwind CSS Documentation & Context7** (referensi konfigurasi Vite + Tailwind v4)
-
-### 2. Bagaimana Tools Tersebut Membantu:
-- **Penyusunan Mock Dataset**: Membantu menyusun data lowongan realistis yang merefleksikan kebutuhan nyata Sekolah Karir (Engineering, Product & Design, Curriculum & Learning, Marketing & Growth, People & Operations).
-- **Best Practice Aksesibilitas (a11y)**: Memberikan rekomendasi struktur semantic HTML (`<article>`, `<section>`, `<main>`) serta standar WAI-ARIA (`role="tablist"`, `role="tab"`, `aria-selected`, `aria-modal`) agar navigasi filter ramah keyboard dan pembaca layar.
-- **Scaffolding & Responsive Styling**: Mempercepat pembuatan boilerplate React + TypeScript dan konfigurasi utilitas Tailwind CSS v4 untuk breakpoint mobile, tablet, dan desktop.
-
-### 3. Pernyataan Pemahaman Kandidat:
-Seluruh baris kode, arsitektur komponen, dan alur penanganan state (`useState`, `useMemo`, *derived state*) telah dikaji, dipahami secara penuh, dan kandidat mampu menjelaskan setiap keputusan teknis secara transparan pada sesi evaluasi teknis.
-
----
-
-## 💡 Alur Logika & State Handling (Reasoning)
-
-Untuk menjaga kode tetap **sederhana, mudah dipahami, dan mudah di-maintain**, arsitektur aplikasi dirancang dengan prinsip:
-
-1. **Single Source of Truth & Derived State**:
-   - `MOCK_ROLES` berperan sebagai data mentah (sumber utama).
-   - Filter departemen dikontrol oleh satu state utama: `selectedDepartment`.
-   - Data yang tampil ke pengguna (`filteredRoles`) dihitung secara langsung menggunakan **derived state** via `useMemo`, **bukan** disimpan di `state` terpisah menggunakan `useEffect`. Pendekatan ini mencegah bug desinkronisasi data dan menghilangkan re-render berlebih.
-
-2. **3 State Utama yang Ditangani**:
-   - **Default State**: Saat `selectedDepartment === 'All'` dan kotak pencarian kosong, seluruh 10 posisi langsung ditampilkan.
-   - **Filtered State**: Saat pengguna mengklik salah satu tombol kategori (misal: *Engineering*), daftar peran disaring secara instan.
-   - **Empty State**: Jika hasil filter atau kata kunci pencarian tidak menghasilkan role apapun (`filteredRoles.length === 0`), komponen `EmptyState` akan dirender menggantikan grid kartu, dilengkapi tombol aksi yang mereset filter kembali ke `'All'`.
-
-3. **Sinkronisasi URL Parameter (Bookmarkable)**:
-   - Nilai departemen yang aktif disinkronkan ke URL query parameter (`?department=...`) menggunakan `history.replaceState`. Hal ini memungkinkan pengguna membagikan link filter spesifik kepada rekan mereka tanpa perlu state management library eksternal yang rumit.
-
----
-
-## 🚀 Panduan Menjalankan Secara Lokal
-
-### Prasyarat
-- Node.js versi 18+ (disarankan Node.js v20 atau v22)
-- NPM atau PNPM / Yarn
-
-### Langkah Instalasi
-1. Clone repositori ini:
-   ```bash
-   git clone <link-repository>
-   cd sekolahkarir-mini-test
-   ```
-
+1. Pastikan Node.js (versi 18 ke atas) sudah terpasang.
 2. Pasang dependensi:
    ```bash
    npm install
    ```
-
-3. Jalankan development server:
+3. Jalankan server lokal:
    ```bash
    npm run dev
    ```
-   Buka browser di `http://localhost:5173`.
-
-4. Untuk build produksi:
+   Buka alamat `http://localhost:5173` di browser.
+4. Buat build produksi:
    ```bash
    npm run build
    npm run preview
    ```
 
----
+## Informasi Pengumpulan
 
-## 🔗 Live Demo & Submission Details
-
-- **Live Demo Link**: *(Cantumkan link deploy Vercel / Netlify setelah dideploy)*
-- **Repository**: *(Cantumkan link repositori GitHub)*
-- **Format Penamaan**: `[NamaLengkap]_FrontEndEngineer_SKBatch2`
+- Repository: `https://github.com/[username]/[NamaLengkap]_FrontEndEngineer_SKBatch2`
+- Live Demo: `[URL deploy Vercel atau Netlify]`
+- Format penamaan repositori dan file: `[NamaLengkap]_FrontEndEngineer_SKBatch2`

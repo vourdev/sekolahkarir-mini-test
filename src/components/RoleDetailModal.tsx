@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Role } from '../types/role';
-import { X, MapPin, Briefcase, Clock, CheckCircle2, Award, Zap } from 'lucide-react';
+import { X, MapPin, Briefcase, Clock, Check } from 'lucide-react';
 
 interface RoleDetailModalProps {
   role: Role | null;
@@ -40,30 +40,19 @@ export const RoleDetailModal: React.FC<RoleDetailModalProps> = ({
       aria-labelledby="modal-title"
       className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6"
     >
-      {/* Backdrop */}
       <div
-        className="fixed inset-0 bg-slate-900/50 backdrop-blur-sm transition-opacity"
+        className="fixed inset-0 bg-slate-900/40 backdrop-blur-xs"
         onClick={onClose}
         aria-hidden="true"
       />
 
-      {/* Modal Dialog Content */}
-      <div className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto bg-white rounded-3xl shadow-2xl border border-slate-200 z-10 flex flex-col animate-in fade-in zoom-in-95 duration-200">
-        {/* Modal Header */}
-        <div className="sticky top-0 bg-white/95 backdrop-blur-md px-6 py-5 border-b border-slate-100 flex items-start justify-between gap-4 z-10">
+      <div className="relative w-full max-w-xl max-h-[85vh] overflow-y-auto bg-white rounded-2xl shadow-xl border border-slate-200 z-10 flex flex-col">
+        <div className="sticky top-0 bg-white/95 backdrop-blur-xs px-5 py-4 border-b border-slate-100 flex items-start justify-between gap-3">
           <div>
-            <div className="flex items-center gap-2 mb-1.5">
-              <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-indigo-50 text-indigo-700 border border-indigo-200">
-                {role.department}
-              </span>
-              {role.isUrgent && (
-                <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-semibold bg-red-50 text-red-700 border border-red-200">
-                  <Zap className="w-3 h-3 fill-red-500 text-red-500" />
-                  Urgent Hiring
-                </span>
-              )}
-            </div>
-            <h2 id="modal-title" className="text-xl sm:text-2xl font-bold text-slate-900">
+            <span className="inline-block px-2 py-0.5 rounded text-xs font-medium bg-slate-100 text-slate-700 mb-1">
+              {role.department}
+            </span>
+            <h2 id="modal-title" className="text-lg sm:text-xl font-bold text-slate-900">
               {role.title}
             </h2>
           </div>
@@ -71,90 +60,82 @@ export const RoleDetailModal: React.FC<RoleDetailModalProps> = ({
           <button
             type="button"
             onClick={onClose}
-            className="p-2 text-slate-400 hover:text-slate-700 hover:bg-slate-100 rounded-full transition-colors cursor-pointer"
-            aria-label="Tutup jendela detail"
+            className="p-1.5 text-slate-400 hover:text-slate-600 rounded-lg hover:bg-slate-100 transition-colors"
+            aria-label="Tutup detail peran"
           >
             <X className="w-5 h-5" />
           </button>
         </div>
 
-        {/* Modal Body */}
-        <div className="px-6 py-6 space-y-6">
-          {/* Quick Info Grid */}
-          <div className="grid grid-cols-3 gap-3 p-4 rounded-2xl bg-slate-50 border border-slate-200/80 text-xs sm:text-sm">
-            <div className="flex items-center gap-2">
-              <MapPin className="w-4 h-4 text-indigo-500 shrink-0" />
-              <div>
-                <p className="text-[11px] text-slate-400 font-medium">Lokasi</p>
-                <p className="font-semibold text-slate-800">{role.location}</p>
-              </div>
+        <div className="px-5 py-5 space-y-5 text-sm text-slate-700">
+          <div className="grid grid-cols-3 gap-2 p-3 rounded-lg bg-slate-50 border border-slate-100 text-xs">
+            <div>
+              <span className="text-slate-400 block">Lokasi</span>
+              <span className="font-medium text-slate-800 flex items-center gap-1 mt-0.5">
+                <MapPin className="w-3 h-3 text-slate-500" />
+                {role.location}
+              </span>
             </div>
-            <div className="flex items-center gap-2 border-x border-slate-200 px-3">
-              <Briefcase className="w-4 h-4 text-indigo-500 shrink-0" />
-              <div>
-                <p className="text-[11px] text-slate-400 font-medium">Tipe</p>
-                <p className="font-semibold text-slate-800">{role.type}</p>
-              </div>
+            <div>
+              <span className="text-slate-400 block">Tipe</span>
+              <span className="font-medium text-slate-800 flex items-center gap-1 mt-0.5">
+                <Briefcase className="w-3 h-3 text-slate-500" />
+                {role.type}
+              </span>
             </div>
-            <div className="flex items-center gap-2 pl-2">
-              <Clock className="w-4 h-4 text-indigo-500 shrink-0" />
-              <div>
-                <p className="text-[11px] text-slate-400 font-medium">Diposting</p>
-                <p className="font-semibold text-slate-800">{role.postedAt}</p>
-              </div>
+            <div>
+              <span className="text-slate-400 block">Diperbarui</span>
+              <span className="font-medium text-slate-800 flex items-center gap-1 mt-0.5">
+                <Clock className="w-3 h-3 text-slate-500" />
+                {role.postedAt}
+              </span>
             </div>
           </div>
 
-          {/* Description */}
           <div>
-            <h3 className="text-sm font-bold text-slate-900 uppercase tracking-wider mb-2">
-              Deskripsi Peran
+            <h3 className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1.5">
+              Deskripsi
             </h3>
-            <p className="text-sm text-slate-600 leading-relaxed">
-              {role.description}
-            </p>
+            <p className="leading-relaxed text-slate-600">{role.description}</p>
           </div>
 
-          {/* Responsibilities */}
           <div>
-            <h3 className="text-sm font-bold text-slate-900 uppercase tracking-wider mb-3">
-              Tanggung Jawab Utama
+            <h3 className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">
+              Tanggung Jawab
             </h3>
-            <ul className="space-y-2">
+            <ul className="space-y-1.5">
               {role.responsibilities.map((resp, idx) => (
-                <li key={idx} className="flex items-start gap-2.5 text-sm text-slate-600">
-                  <CheckCircle2 className="w-4 h-4 text-indigo-600 shrink-0 mt-0.5" />
+                <li key={idx} className="flex items-start gap-2 text-slate-600">
+                  <Check className="w-4 h-4 text-indigo-600 shrink-0 mt-0.5" />
                   <span>{resp}</span>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Requirements */}
           <div>
-            <h3 className="text-sm font-bold text-slate-900 uppercase tracking-wider mb-3">
-              Kualifikasi & Persyaratan
+            <h3 className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">
+              Kualifikasi
             </h3>
-            <ul className="space-y-2">
+            <ul className="space-y-1.5">
               {role.requirements.map((req, idx) => (
-                <li key={idx} className="flex items-start gap-2.5 text-sm text-slate-600">
-                  <Award className="w-4 h-4 text-indigo-500 shrink-0 mt-0.5" />
+                <li key={idx} className="flex items-start gap-2 text-slate-600">
+                  <Check className="w-4 h-4 text-slate-400 shrink-0 mt-0.5" />
                   <span>{req}</span>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Skills Required */}
           <div>
-            <h3 className="text-sm font-bold text-slate-900 uppercase tracking-wider mb-2.5">
-              Keahlian / Tech Stack Terkait
+            <h3 className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">
+              Keahlian Terkait
             </h3>
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-1.5">
               {role.skills.map((skill) => (
                 <span
                   key={skill}
-                  className="px-3 py-1 rounded-lg text-xs font-semibold bg-indigo-50 text-indigo-700 border border-indigo-100"
+                  className="px-2 py-0.5 rounded text-xs bg-slate-100 text-slate-700"
                 >
                   {skill}
                 </span>
@@ -163,12 +144,11 @@ export const RoleDetailModal: React.FC<RoleDetailModalProps> = ({
           </div>
         </div>
 
-        {/* Modal Footer Actions */}
-        <div className="sticky bottom-0 bg-slate-50 border-t border-slate-200 px-6 py-4 flex items-center justify-end gap-3 rounded-b-3xl">
+        <div className="sticky bottom-0 bg-slate-50 border-t border-slate-100 px-5 py-3 flex items-center justify-end gap-2 rounded-b-2xl">
           <button
             type="button"
             onClick={onClose}
-            className="px-4 py-2.5 rounded-xl text-sm font-semibold text-slate-700 hover:bg-slate-200/80 transition-colors cursor-pointer"
+            className="px-3.5 py-1.5 rounded-lg text-xs font-semibold text-slate-600 hover:bg-slate-200 transition-colors cursor-pointer"
           >
             Tutup
           </button>
@@ -178,7 +158,7 @@ export const RoleDetailModal: React.FC<RoleDetailModalProps> = ({
               onApply(role);
               onClose();
             }}
-            className="px-6 py-2.5 rounded-xl text-sm font-semibold text-white bg-indigo-600 hover:bg-indigo-700 active:scale-[0.98] shadow-sm shadow-indigo-200 transition-all cursor-pointer"
+            className="px-4 py-1.5 rounded-lg text-xs font-semibold text-white bg-indigo-600 hover:bg-indigo-700 transition-colors cursor-pointer"
           >
             Lamar Posisi Ini
           </button>

@@ -18,7 +18,7 @@ export const MOCK_ROLES: Role[] = [
     location: 'Remote',
     experienceLevel: 'Intern',
     description:
-      'Membantu pengembangan antarmuka web platform Sekolah Karir dengan performa tinggi, desain responsif, dan interaktivitas modern.',
+      'Membantu pengembangan tampilan web Sekolah Karir menggunakan React dan Tailwind CSS agar responsif dan mudah digunakan.',
     responsibilities: [
       'Mengembangkan komponen antarmuka modular menggunakan React dan Tailwind CSS.',
       'Bekerja sama dengan UI/UX Designer untuk menerjemahkan wireframe Figma ke kode yang presisi.',
@@ -44,7 +44,7 @@ export const MOCK_ROLES: Role[] = [
     location: 'Hybrid (Jakarta)',
     experienceLevel: 'Intern',
     description:
-      'Merancang dan membangun RESTful API serta arsitektur database yang scalable untuk mendukung ekosistem belajar Sekolah Karir.',
+      'Merancang dan membangun endpoint REST API serta struktur database PostgreSQL untuk layanan Sekolah Karir.',
     responsibilities: [
       'Membangun endpoint API yang aman, cepat, dan teruji dengan Node.js / Go.',
       'Mengelola query database PostgreSQL dan caching dengan Redis.',
@@ -67,11 +67,11 @@ export const MOCK_ROLES: Role[] = [
     location: 'Remote',
     experienceLevel: 'Intern',
     description:
-      'Memastikan kualitas dan reliabilitas seluruh fitur platform Sekolah Karir melalui manual dan automated testing.',
+      'Menjalankan pengujian manual dan skenario test case untuk memastikan fitur aplikasi web berjalan tanpa kendala.',
     responsibilities: [
-      'Membuat test scenarios, test cases, dan bug reports yang komprehensif.',
-      'Melakukan regression testing dan usability testing pada rilis terbaru.',
-      'Membantu implementasi automated test menggunakan Playwright atau Cypress.',
+      'Menyusun skenario pengujian dan laporan temuan bug secara terstruktur.',
+      'Melakukan pengujian regresi pada setiap rilis fitur baru.',
+      'Membantu penulisan automated test sederhana dengan Playwright.',
     ],
     requirements: [
       'Memiliki ketelitian tinggi dan pola pikir analitis dalam menemukan edge cases.',
@@ -90,7 +90,7 @@ export const MOCK_ROLES: Role[] = [
     location: 'Hybrid (Jakarta)',
     experienceLevel: 'Intern',
     description:
-      'Mendesain alur pengalaman belajar digital yang intuitif, inklusif, dan menyenangkan bagi ribuan pembelajar Sekolah Karir.',
+      'Mendesain antarmuka web dan mobile platform Sekolah Karir mulai dari wireframe hingga prototipe interaktif di Figma.',
     responsibilities: [
       'Melakukan user interview dan usability testing bersama mentor dan siswa.',
       'Membangun user flow, wireframe low-fidelity hingga high-fidelity prototype di Figma.',
@@ -180,18 +180,18 @@ export const MOCK_ROLES: Role[] = [
     location: 'Hybrid (Jakarta)',
     experienceLevel: 'Intern',
     description:
-      'Mengembangkan konten edukasi karir yang viral, inspiratif, dan berdampak di platform Instagram, TikTok, dan LinkedIn.',
+      'Membuat materi konten seputar tips karir dan persiapan kerja untuk Instagram, TikTok, dan LinkedIn.',
     responsibilities: [
-      'Riset tren karir, tips CV, dan interview kerja untuk dijadikan konten harian.',
-      'Memproduksi konten short-form video (Reels & TikTok) dan carousels edukatif.',
-      'Menganalisis performa reach, engagement rate, dan konversi pendaftar program.',
+      'Riset topik karir, tips CV, dan simulasi interview kerja.',
+      'Memproduksi video pendek (Reels dan TikTok) serta infografik edukatif.',
+      'Mencatat metrik interaksi dan performa mingguan konten.',
     ],
     requirements: [
-      'Aktif di media sosial dan paham algoritma TikTok, Instagram, serta LinkedIn.',
-      'Kemampuan copywriting yang menarik, santun, dan relevan dengan audiens Gen Z.',
-      'Menguasai CapCut, Canva, atau Adobe Premiere dasar.',
+      'Aktif di media sosial dan memahami format konten video vertikal.',
+      'Kemampuan menulis teks yang ringkas dan komunikatif.',
+      'Familiar dengan CapCut, Canva, atau software editing sejenis.',
     ],
-    skills: ['Short-form Video', 'Copywriting', 'CapCut', 'Social Media Analytics', 'Canva'],
+    skills: ['Video Pendek', 'Copywriting', 'CapCut', 'Canva', 'Social Media'],
     isFeatured: false,
     postedAt: '3 hari lalu',
   },
@@ -203,17 +203,17 @@ export const MOCK_ROLES: Role[] = [
     location: 'Remote',
     experienceLevel: 'Intern',
     description:
-      'Membangun kolaborasi strategis dengan universitas, BEM, dan komunitas kampus di seluruh Indonesia untuk menyebarkan akses karir.',
+      'Menjalin komunikasi dan kerja sama dengan organisasi mahasiswa serta komunitas kampus untuk sosialisasi program.',
     responsibilities: [
-      'Melakukan outreach ke organisasi mahasiswa dan partner media kampus.',
-      'Menginisiasi webinar karir bersama mitra kampus dan komunitas teknologi.',
-      'Mengelola database mitra dan mengevaluasi efektivitas program kolaborasi.',
+      'Menghubungi perwakilan organisasi mahasiswa dan media partner kampus.',
+      'Membantu koordinasi teknis pelaksanaan webinar dan sesi info session.',
+      'Memperbarui database kontak kemitraan kampus.',
     ],
     requirements: [
-      'Pengalaman aktif dalam kepanitiaan atau organisasi kampus (BEM/Himpunan).',
-      'Kemampuan negosiasi, presentasi, dan jejaring relasi yang baik.',
+      'Pengalaman aktif di kepanitiaan atau organisasi kampus.',
+      'Komunikasi lisan dan tulisan yang baik.',
     ],
-    skills: ['Partnership Outreach', 'Event Planning', 'Public Relations', 'Negotiation'],
+    skills: ['Partnership', 'Event Coordination', 'Komunikasi', 'Outreach'],
     isFeatured: false,
     postedAt: '4 hari lalu',
   },
@@ -225,18 +225,18 @@ export const MOCK_ROLES: Role[] = [
     location: 'Hybrid (Jakarta)',
     experienceLevel: 'Intern',
     description:
-      'Mendukung operasional rekrutmen batch internship, onboarding talent baru, serta mengelola data administrasi internal perusahaan.',
+      'Membantu proses administrasi rekrutmen peserta internship, penjadwalan interview, dan pencatatan data kandidat.',
     responsibilities: [
-      'Membantu screening berkas pelamar dan penjadwalan interview kandidat.',
-      'Mempersiapkan proses onboarding dan administrasi kontrak internship.',
-      'Mendukung inisiatif employee engagement dan kegiatan bonding internal.',
+      'Membantu penyortiran berkas pelamar dan mengatur jadwal wawancara.',
+      'Menyiapkan checklist onboarding peserta magang baru.',
+      'Memperbarui data pelamar secara berkala pada spreadsheet rekrutmen.',
     ],
     requirements: [
-      'Mahasiswa jurusan Psikologi, Manajemen SDM, atau bidang terkait.',
-      'Memahami proses rekrutmen dasar dan etika penanganan data pribadi.',
-      'Kemampuan organisasi yang rapi dan teliti mengelola spreadsheet.',
+      'Mahasiswa jurusan Psikologi, Manajemen, atau bidang terkait.',
+      'Teliti dan rapi dalam mengelola data administrasi.',
+      'Terbiasa menggunakan Google Sheets atau Microsoft Excel.',
     ],
-    skills: ['Candidate Screening', 'HR Operations', 'Google Workspace', 'Communication'],
+    skills: ['Screening Dokumen', 'Administrasi HR', 'Google Sheets', 'Komunikasi'],
     isFeatured: false,
     postedAt: '5 hari lalu',
   },
