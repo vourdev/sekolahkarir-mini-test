@@ -65,16 +65,41 @@ sekolahkarir-mini-test/
 
 ---
 
-## 🤖 Catatan Penggunaan AI (*AI Tools Policy Disclosure*)
+## 🤖 Kepatuhan Tools & AI Policy (Catatan Resmi Penggunaan AI)
 
-Sesuai dengan panduan **Tools & AI Policy** pada dokumen brief assignment:
+Sesuai dengan ketentuan pada dokumen assignment:
+> *"Kamu boleh menggunakan AI tools, internet references, coding/design assistants, atau tools lain yang relevan. Jika menggunakan AI, tambahkan catatan singkat berisi tool yang digunakan dan bagaimana tool tersebut membantu. Kamu tetap harus memahami dan mampu menjelaskan seluruh hasil yang dikumpulkan."*
 
-- **Tool yang digunakan**: **Antigravity (Google DeepMind Coding Assistant)**
-- **Bagaimana AI membantu**:
-  1. Membantu *brainstorming* dan menyusun dataset *mock* posisi yang relevan dan realistis dengan ekosistem Sekolah Karir (Engineering, Product, Curriculum, Marketing, Ops).
-  2. Memberikan rekomendasi struktur semantic HTML dan aksesibilitas ARIA (`role="tablist"`, `role="tab"`, `aria-selected`, `aria-modal`) untuk memastikan komponen inklusif dan ramah pembaca layar.
-  3. Mempercepat *scaffolding* boilerplate komponen dan integrasi Tailwind CSS v4.
-- **Pernyataan Kandidat**: Seluruh arsitektur kode, penanganan state, dan implementasi UX dipahami secara menyeluruh dan siap dipertanggungjawabkan serta dijelaskan dalam sesi wawancara teknis.
+### 1. Tools yang Digunakan:
+- **Antigravity (Google DeepMind Coding Assistant)**
+- **Tailwind CSS Documentation & Context7** (referensi konfigurasi Vite + Tailwind v4)
+
+### 2. Bagaimana Tools Tersebut Membantu:
+- **Penyusunan Mock Dataset**: Membantu menyusun data lowongan realistis yang merefleksikan kebutuhan nyata Sekolah Karir (Engineering, Product & Design, Curriculum & Learning, Marketing & Growth, People & Operations).
+- **Best Practice Aksesibilitas (a11y)**: Memberikan rekomendasi struktur semantic HTML (`<article>`, `<section>`, `<main>`) serta standar WAI-ARIA (`role="tablist"`, `role="tab"`, `aria-selected`, `aria-modal`) agar navigasi filter ramah keyboard dan pembaca layar.
+- **Scaffolding & Responsive Styling**: Mempercepat pembuatan boilerplate React + TypeScript dan konfigurasi utilitas Tailwind CSS v4 untuk breakpoint mobile, tablet, dan desktop.
+
+### 3. Pernyataan Pemahaman Kandidat:
+Seluruh baris kode, arsitektur komponen, dan alur penanganan state (`useState`, `useMemo`, *derived state*) telah dikaji, dipahami secara penuh, dan kandidat mampu menjelaskan setiap keputusan teknis secara transparan pada sesi evaluasi teknis.
+
+---
+
+## 💡 Alur Logika & State Handling (Reasoning)
+
+Untuk menjaga kode tetap **sederhana, mudah dipahami, dan mudah di-maintain**, arsitektur aplikasi dirancang dengan prinsip:
+
+1. **Single Source of Truth & Derived State**:
+   - `MOCK_ROLES` berperan sebagai data mentah (sumber utama).
+   - Filter departemen dikontrol oleh satu state utama: `selectedDepartment`.
+   - Data yang tampil ke pengguna (`filteredRoles`) dihitung secara langsung menggunakan **derived state** via `useMemo`, **bukan** disimpan di `state` terpisah menggunakan `useEffect`. Pendekatan ini mencegah bug desinkronisasi data dan menghilangkan re-render berlebih.
+
+2. **3 State Utama yang Ditangani**:
+   - **Default State**: Saat `selectedDepartment === 'All'` dan kotak pencarian kosong, seluruh 10 posisi langsung ditampilkan.
+   - **Filtered State**: Saat pengguna mengklik salah satu tombol kategori (misal: *Engineering*), daftar peran disaring secara instan.
+   - **Empty State**: Jika hasil filter atau kata kunci pencarian tidak menghasilkan role apapun (`filteredRoles.length === 0`), komponen `EmptyState` akan dirender menggantikan grid kartu, dilengkapi tombol aksi yang mereset filter kembali ke `'All'`.
+
+3. **Sinkronisasi URL Parameter (Bookmarkable)**:
+   - Nilai departemen yang aktif disinkronkan ke URL query parameter (`?department=...`) menggunakan `history.replaceState`. Hal ini memungkinkan pengguna membagikan link filter spesifik kepada rekan mereka tanpa perlu state management library eksternal yang rumit.
 
 ---
 
