@@ -86,6 +86,6 @@ sekolahkarir-mini-test/
 
 ## Informasi Pengumpulan
 
-- Repository: `https://github.com/[username]/[NamaLengkap]_FrontEndEngineer_SKBatch2`
+- Repository: `https://github.com/vourdev/sekolahkarir-mini-test`
 - Live Demo: `[URL deploy Vercel atau Netlify]`
 - Format penamaan repositori dan file: `[NamaLengkap]_FrontEndEngineer_SKBatch2`
