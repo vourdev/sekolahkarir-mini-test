@@ -41,18 +41,18 @@ export const RoleDetailModal: React.FC<RoleDetailModalProps> = ({
       className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6"
     >
       <div
-        className="fixed inset-0 bg-slate-900/40 backdrop-blur-xs"
+        className="fixed inset-0 bg-sk-navy/50 backdrop-blur-xs transition-opacity"
         onClick={onClose}
         aria-hidden="true"
       />
 
-      <div className="relative w-full max-w-xl max-h-[85vh] overflow-y-auto bg-white rounded-2xl shadow-xl border border-slate-200 z-10 flex flex-col">
-        <div className="sticky top-0 bg-white/95 backdrop-blur-xs px-5 py-4 border-b border-slate-100 flex items-start justify-between gap-3">
+      <div className="relative w-full max-w-xl max-h-[85vh] overflow-y-auto bg-white rounded-3xl shadow-2xl border border-sk-line z-10 flex flex-col">
+        <div className="sticky top-0 bg-white/95 backdrop-blur-md px-6 py-5 border-b border-sk-line flex items-start justify-between gap-3">
           <div>
-            <span className="inline-block px-2 py-0.5 rounded text-xs font-medium bg-slate-100 text-slate-700 mb-1">
+            <span className="inline-block px-3 py-1 rounded-full text-xs font-bold bg-sk-blue-50 text-sk-accent-hover border border-sk-blue-100 mb-2">
               {role.departmentLabel}
             </span>
-            <h2 id="modal-title" className="text-lg sm:text-xl font-bold text-slate-900">
+            <h2 id="modal-title" className="text-xl sm:text-2xl font-extrabold text-sk-navy">
               {role.title}
             </h2>
           </div>
@@ -60,53 +60,53 @@ export const RoleDetailModal: React.FC<RoleDetailModalProps> = ({
           <button
             type="button"
             onClick={onClose}
-            className="p-1.5 text-slate-400 hover:text-slate-600 rounded-lg hover:bg-slate-100 transition-colors"
+            className="p-1.5 text-sk-muted hover:text-sk-navy rounded-full hover:bg-sk-soft transition-colors cursor-pointer"
             aria-label="Tutup detail peran"
           >
             <X className="w-5 h-5" />
           </button>
         </div>
 
-        <div className="px-5 py-5 space-y-5 text-sm text-slate-700">
-          <div className="grid grid-cols-3 gap-2 p-3 rounded-lg bg-slate-50 border border-slate-100 text-xs">
+        <div className="px-6 py-6 space-y-6 text-sm text-sk-ink">
+          <div className="grid grid-cols-3 gap-2.5 p-4 rounded-2xl bg-sk-soft border border-sk-line text-xs font-medium">
             <div>
-              <span className="text-slate-400 block">Lokasi</span>
-              <span className="font-medium text-slate-800 flex items-center gap-1 mt-0.5">
-                <MapPin className="w-3 h-3 text-slate-500" />
+              <span className="text-sk-muted block">Lokasi</span>
+              <span className="font-bold text-sk-navy flex items-center gap-1 mt-0.5">
+                <MapPin className="w-3.5 h-3.5 text-sk-accent" />
                 {role.location}
               </span>
             </div>
             <div>
-              <span className="text-slate-400 block">Tipe</span>
-              <span className="font-medium text-slate-800 flex items-center gap-1 mt-0.5">
-                <Briefcase className="w-3 h-3 text-slate-500" />
+              <span className="text-sk-muted block">Tipe</span>
+              <span className="font-bold text-sk-navy flex items-center gap-1 mt-0.5">
+                <Briefcase className="w-3.5 h-3.5 text-sk-accent" />
                 {role.type}
               </span>
             </div>
             <div>
-              <span className="text-slate-400 block">Diperbarui</span>
-              <span className="font-medium text-slate-800 flex items-center gap-1 mt-0.5">
-                <Clock className="w-3 h-3 text-slate-500" />
+              <span className="text-sk-muted block">Diperbarui</span>
+              <span className="font-bold text-sk-navy flex items-center gap-1 mt-0.5">
+                <Clock className="w-3.5 h-3.5 text-sk-accent" />
                 {role.postedAt}
               </span>
             </div>
           </div>
 
           <div>
-            <h3 className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1.5">
+            <h3 className="text-xs font-bold text-sk-navy uppercase tracking-wider mb-2">
               Deskripsi
             </h3>
-            <p className="leading-relaxed text-slate-600">{role.description}</p>
+            <p className="leading-relaxed text-sk-muted">{role.description}</p>
           </div>
 
           <div>
-            <h3 className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">
+            <h3 className="text-xs font-bold text-sk-navy uppercase tracking-wider mb-2.5">
               Tanggung Jawab
             </h3>
-            <ul className="space-y-1.5">
+            <ul className="space-y-2">
               {role.responsibilities.map((resp, idx) => (
-                <li key={idx} className="flex items-start gap-2 text-slate-600">
-                  <Check className="w-4 h-4 text-indigo-600 shrink-0 mt-0.5" />
+                <li key={idx} className="flex items-start gap-2.5 text-sk-muted">
+                  <Check className="w-4 h-4 text-sk-accent shrink-0 mt-0.5 stroke-[2.5]" />
                   <span>{resp}</span>
                 </li>
               ))}
@@ -114,13 +114,13 @@ export const RoleDetailModal: React.FC<RoleDetailModalProps> = ({
           </div>
 
           <div>
-            <h3 className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">
+            <h3 className="text-xs font-bold text-sk-navy uppercase tracking-wider mb-2.5">
               Kualifikasi
             </h3>
-            <ul className="space-y-1.5">
+            <ul className="space-y-2">
               {role.requirements.map((req, idx) => (
-                <li key={idx} className="flex items-start gap-2 text-slate-600">
-                  <Check className="w-4 h-4 text-slate-400 shrink-0 mt-0.5" />
+                <li key={idx} className="flex items-start gap-2.5 text-sk-muted">
+                  <Check className="w-4 h-4 text-sk-accent shrink-0 mt-0.5 stroke-[2.5]" />
                   <span>{req}</span>
                 </li>
               ))}
@@ -128,14 +128,14 @@ export const RoleDetailModal: React.FC<RoleDetailModalProps> = ({
           </div>
 
           <div>
-            <h3 className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">
+            <h3 className="text-xs font-bold text-sk-navy uppercase tracking-wider mb-2.5">
               Keahlian Terkait
             </h3>
-            <div className="flex flex-wrap gap-1.5">
+            <div className="flex flex-wrap gap-2">
               {role.skills.map((skill) => (
                 <span
                   key={skill}
-                  className="px-2 py-0.5 rounded text-xs bg-slate-100 text-slate-700"
+                  className="px-3 py-1 rounded-lg text-xs font-semibold bg-sk-soft text-sk-ink border border-sk-line"
                 >
                   {skill}
                 </span>
@@ -144,11 +144,11 @@ export const RoleDetailModal: React.FC<RoleDetailModalProps> = ({
           </div>
         </div>
 
-        <div className="sticky bottom-0 bg-slate-50 border-t border-slate-100 px-5 py-3 flex items-center justify-end gap-2 rounded-b-2xl">
+        <div className="sticky bottom-0 bg-sk-soft border-t border-sk-line px-6 py-4 flex items-center justify-end gap-2.5 rounded-b-3xl">
           <button
             type="button"
             onClick={onClose}
-            className="px-3.5 py-1.5 rounded-lg text-xs font-semibold text-slate-600 hover:bg-slate-200 transition-colors cursor-pointer"
+            className="px-4 py-2 rounded-full text-xs font-bold text-sk-navy bg-white border border-sk-line hover:bg-sk-blue-50 transition-colors cursor-pointer"
           >
             Tutup
           </button>
@@ -158,7 +158,7 @@ export const RoleDetailModal: React.FC<RoleDetailModalProps> = ({
               onApply(role);
               onClose();
             }}
-            className="px-4 py-1.5 rounded-lg text-xs font-semibold text-white bg-indigo-600 hover:bg-indigo-700 transition-colors cursor-pointer"
+            className="px-5 py-2 rounded-full text-xs font-bold text-white bg-sk-navy hover:bg-sk-navy-hover transition-colors cursor-pointer shadow-sm"
           >
             Lamar Posisi Ini
           </button>

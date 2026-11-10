@@ -15,12 +15,12 @@ export const DepartmentFilter: React.FC<DepartmentFilterProps> = ({
 }) => {
   return (
     <div className="w-full">
-      <div className="flex items-center justify-between mb-2.5">
-        <label htmlFor="dept-tablist" className="text-xs font-semibold text-slate-500 uppercase tracking-wider">
-          Departemen
+      <div className="flex items-center justify-between mb-3">
+        <label htmlFor="dept-tablist" className="text-xs font-bold text-sk-navy uppercase tracking-wider">
+          Filter Departemen
         </label>
-        <span className="text-xs text-slate-400 hidden sm:inline">
-          Pilih kategori untuk memfilter daftar
+        <span className="text-xs text-sk-muted hidden sm:inline">
+          Pilih kategori untuk menyaring posisi kerja
         </span>
       </div>
 
@@ -41,16 +41,16 @@ export const DepartmentFilter: React.FC<DepartmentFilterProps> = ({
               aria-selected={isActive}
               aria-controls="role-grid"
               onClick={() => onSelectDepartment(dept.id)}
-              className={`flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-colors whitespace-nowrap cursor-pointer select-none focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 ${
+              className={`flex items-center gap-2 px-4 py-2 rounded-full text-xs sm:text-sm font-bold transition-all whitespace-nowrap cursor-pointer select-none focus:outline-none focus-visible:ring-2 focus-visible:ring-sk-accent ${
                 isActive
-                  ? 'bg-indigo-600 text-white'
-                  : 'bg-white text-slate-700 border border-slate-200 hover:bg-slate-50'
+                  ? 'bg-sk-navy text-white shadow-sm'
+                  : 'bg-white text-sk-ink border border-sk-line hover:border-sk-line-strong hover:bg-sk-blue-50/50'
               }`}
             >
               <span>{dept.label}</span>
               <span
-                className={`inline-flex items-center justify-center px-1.5 py-0.2 rounded text-[11px] font-semibold ${
-                  isActive ? 'bg-indigo-500 text-white' : 'bg-slate-100 text-slate-600'
+                className={`inline-flex items-center justify-center px-2 py-0.5 rounded-full text-[11px] font-bold ${
+                  isActive ? 'bg-white/20 text-white' : 'bg-sk-blue-50 text-sk-accent-hover'
                 }`}
               >
                 {count}

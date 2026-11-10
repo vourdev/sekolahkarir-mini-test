@@ -90,7 +90,7 @@ export function App() {
   }, []);
 
   return (
-    <div className="min-h-screen flex flex-col bg-slate-50 text-slate-900">
+    <div className="min-h-screen flex flex-col bg-sk-soft text-sk-ink font-['Plus_Jakarta_Sans',system-ui,sans-serif]">
       <Navbar />
 
       <HeroSection
@@ -100,22 +100,22 @@ export function App() {
         totalDepartments={DEPARTMENTS.length - 1}
       />
 
-      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="space-y-5">
+      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10">
+        <div className="space-y-6">
           <DepartmentFilter
             activeDepartment={selectedDepartment}
             onSelectDepartment={setSelectedDepartment}
             departmentCounts={departmentCounts}
           />
 
-          <div className="flex items-center justify-between gap-3 pt-2 pb-3 border-b border-slate-200 text-xs sm:text-sm text-slate-600">
+          <div className="flex items-center justify-between gap-3 pt-2 pb-3 border-b border-sk-line text-xs sm:text-sm text-sk-muted">
             <div>
-              Menampilkan <strong>{filteredRoles.length}</strong> posisi
+              Menampilkan <strong className="text-sk-navy font-bold">{filteredRoles.length}</strong> posisi
               {selectedDepartment !== 'all' && (
-                <> di departemen <span className="font-semibold text-slate-800">{DEPARTMENT_LABELS[selectedDepartment]}</span></>
+                <> di departemen <span className="font-bold text-sk-navy">{DEPARTMENT_LABELS[selectedDepartment]}</span></>
               )}
               {searchQuery && (
-                <> untuk pencarian "<span className="font-semibold text-slate-800">{searchQuery}</span>"</>
+                <> untuk pencarian "<span className="font-bold text-sk-navy">{searchQuery}</span>"</>
               )}
             </div>
 
@@ -123,7 +123,7 @@ export function App() {
               <button
                 type="button"
                 onClick={handleResetFilters}
-                className="text-xs font-semibold text-indigo-600 hover:text-indigo-800 transition-colors cursor-pointer"
+                className="text-xs font-bold text-sk-accent hover:text-sk-accent-hover transition-colors cursor-pointer"
               >
                 Reset Filter
               </button>
@@ -133,7 +133,7 @@ export function App() {
 
         <section id="role-grid" className="mt-6" aria-label="Daftar lowongan">
           {filteredRoles.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
               {filteredRoles.map((role) => (
                 <RoleCard
                   key={role.id}
