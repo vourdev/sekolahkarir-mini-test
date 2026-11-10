@@ -10,6 +10,16 @@ import { RoleDetailModal } from './components/RoleDetailModal';
 import { Toast } from './components/Toast';
 import { Footer } from './components/Footer';
 
+function matchesField(target: string, query: string): boolean {
+  const cleanTarget = target.toLowerCase();
+  const cleanQuery = query.toLowerCase();
+  if (cleanTarget.includes(cleanQuery)) return true;
+
+  const alphaTarget = cleanTarget.replace(/[^a-z0-9]/g, '');
+  const alphaQuery = cleanQuery.replace(/[^a-z0-9]/g, '');
+  return Boolean(alphaQuery && alphaTarget.includes(alphaQuery));
+}
+
 export function App() {
   const [selectedDepartment, setSelectedDepartment] = useState<Department>(() => {
     if (typeof window !== 'undefined') {
@@ -44,20 +54,27 @@ export function App() {
   }, [toastMessage]);
 
   const filteredRoles = useMemo(() => {
+    const queryTokens = searchQuery.trim().toLowerCase().split(/\s+/).filter(Boolean);
+
     return MOCK_ROLES.filter((role) => {
       const matchesDepartment =
         selectedDepartment === 'all' || role.department === selectedDepartment;
 
-      const query = searchQuery.trim().toLowerCase();
-      const matchesSearch =
-        !query ||
-        role.title.toLowerCase().includes(query) ||
-        role.description.toLowerCase().includes(query) ||
-        role.departmentLabel.toLowerCase().includes(query) ||
-        role.department.includes(query) ||
-        role.skills.some((skill) => skill.toLowerCase().includes(query));
+      if (!matchesDepartment) return false;
+      if (queryTokens.length === 0) return true;
 
-      return matchesDepartment && matchesSearch;
+      const searchableFields = [
+        role.title,
+        role.departmentLabel,
+        role.department,
+        role.description,
+        role.location,
+        ...role.skills,
+      ];
+
+      return queryTokens.every((token) =>
+        searchableFields.some((field) => matchesField(field, token))
+      );
     });
   }, [selectedDepartment, searchQuery]);
 
