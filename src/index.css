@@ -24,9 +24,3 @@
     scroll-behavior: smooth;
   }
 }
-
-/* Subtle dot pattern matching sekolahkarir.id hero */
-.sk-hero-pattern {
-  background-image: radial-gradient(#bcd3ff 1.2px, transparent 1.6px);
-  background-size: 24px 24px;
-}
