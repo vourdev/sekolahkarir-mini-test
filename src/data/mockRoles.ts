@@ -1,19 +1,29 @@
 import { Role, Department } from '../types/role';
 
+export const DEPARTMENT_LABELS: Record<Department, string> = {
+  all: 'Semua Departemen',
+  engineering: 'Engineering',
+  product_and_design: 'Product & Design',
+  curriculum_and_learning: 'Curriculum & Learning',
+  marketing_and_growth: 'Marketing & Growth',
+  people_and_operations: 'People & Operations',
+};
+
 export const DEPARTMENTS: { id: Department; label: string }[] = [
-  { id: 'All', label: 'Semua Departemen' },
-  { id: 'Engineering', label: 'Engineering' },
-  { id: 'Product & Design', label: 'Product & Design' },
-  { id: 'Curriculum & Learning', label: 'Curriculum & Learning' },
-  { id: 'Marketing & Growth', label: 'Marketing & Growth' },
-  { id: 'People & Operations', label: 'People & Operations' },
+  { id: 'all', label: 'Semua Departemen' },
+  { id: 'engineering', label: 'Engineering' },
+  { id: 'product_and_design', label: 'Product & Design' },
+  { id: 'curriculum_and_learning', label: 'Curriculum & Learning' },
+  { id: 'marketing_and_growth', label: 'Marketing & Growth' },
+  { id: 'people_and_operations', label: 'People & Operations' },
 ];
 
 export const MOCK_ROLES: Role[] = [
   {
     id: 'fe-intern-01',
     title: 'Front-End Engineer Intern',
-    department: 'Engineering',
+    department: 'engineering',
+    departmentLabel: 'Engineering',
     type: 'Paid Internship',
     location: 'Remote',
     experienceLevel: 'Intern',
@@ -39,7 +49,8 @@ export const MOCK_ROLES: Role[] = [
   {
     id: 'be-intern-02',
     title: 'Back-End Engineer Intern',
-    department: 'Engineering',
+    department: 'engineering',
+    departmentLabel: 'Engineering',
     type: 'Paid Internship',
     location: 'Hybrid (Jakarta)',
     experienceLevel: 'Intern',
@@ -62,7 +73,8 @@ export const MOCK_ROLES: Role[] = [
   {
     id: 'qa-intern-03',
     title: 'QA / Software Tester Intern',
-    department: 'Engineering',
+    department: 'engineering',
+    departmentLabel: 'Engineering',
     type: 'Paid Internship',
     location: 'Remote',
     experienceLevel: 'Intern',
@@ -85,7 +97,8 @@ export const MOCK_ROLES: Role[] = [
   {
     id: 'uiux-intern-04',
     title: 'UI/UX Designer Intern',
-    department: 'Product & Design',
+    department: 'product_and_design',
+    departmentLabel: 'Product & Design',
     type: 'Paid Internship',
     location: 'Hybrid (Jakarta)',
     experienceLevel: 'Intern',
@@ -108,7 +121,8 @@ export const MOCK_ROLES: Role[] = [
   {
     id: 'apm-intern-05',
     title: 'Associate Product Manager Intern',
-    department: 'Product & Design',
+    department: 'product_and_design',
+    departmentLabel: 'Product & Design',
     type: 'Paid Internship',
     location: 'Hybrid (Jakarta)',
     experienceLevel: 'Intern',
@@ -130,7 +144,8 @@ export const MOCK_ROLES: Role[] = [
   {
     id: 'curriculum-dev-06',
     title: 'Curriculum Developer - Tech Track',
-    department: 'Curriculum & Learning',
+    department: 'curriculum_and_learning',
+    departmentLabel: 'Curriculum & Learning',
     type: 'Paid Internship',
     location: 'Remote',
     experienceLevel: 'Junior',
@@ -153,7 +168,8 @@ export const MOCK_ROLES: Role[] = [
   {
     id: 'mentor-assoc-07',
     title: 'Learning Experience & Mentor Associate',
-    department: 'Curriculum & Learning',
+    department: 'curriculum_and_learning',
+    departmentLabel: 'Curriculum & Learning',
     type: 'Paid Internship',
     location: 'Remote',
     experienceLevel: 'Intern',
@@ -175,7 +191,8 @@ export const MOCK_ROLES: Role[] = [
   {
     id: 'growth-intern-08',
     title: 'Social Media & Content Specialist Intern',
-    department: 'Marketing & Growth',
+    department: 'marketing_and_growth',
+    departmentLabel: 'Marketing & Growth',
     type: 'Paid Internship',
     location: 'Hybrid (Jakarta)',
     experienceLevel: 'Intern',
@@ -198,7 +215,8 @@ export const MOCK_ROLES: Role[] = [
   {
     id: 'community-growth-09',
     title: 'Community & Partnership Growth Intern',
-    department: 'Marketing & Growth',
+    department: 'marketing_and_growth',
+    departmentLabel: 'Marketing & Growth',
     type: 'Paid Internship',
     location: 'Remote',
     experienceLevel: 'Intern',
@@ -220,7 +238,8 @@ export const MOCK_ROLES: Role[] = [
   {
     id: 'talent-ops-10',
     title: 'Talent Acquisition & People Operations Intern',
-    department: 'People & Operations',
+    department: 'people_and_operations',
+    departmentLabel: 'People & Operations',
     type: 'Paid Internship',
     location: 'Hybrid (Jakarta)',
     experienceLevel: 'Intern',

@@ -25,8 +25,8 @@ Aplikasi menggunakan pendekatan derived state untuk menjaga alur data tetap sede
    - Filtered state: Menampilkan kartu posisi yang sesuai ketika pengguna memilih departemen tertentu atau mengetik kata kunci.
    - Empty state: Menampilkan komponen `EmptyState` jika tidak ada posisi yang cocok, dilengkapi tombol reset untuk mengembalikan filter ke kondisi awal.
 
-4. Sinkronisasi URL:
-   Departemen yang dipilih disinkronkan ke parameter URL (`?department=Engineering`), sehingga tautan filter dapat dibagikan atau disimpan langsung.
+4. Sinkronisasi URL (Format Slug):
+   Nilai state departemen menggunakan format huruf kecil dan snake_case (`all`, `engineering`, `product_and_design`, `curriculum_and_learning`, `marketing_and_growth`, `people_and_operations`). Nilai ini disinkronkan ke parameter URL (`?department=product_and_design`), sehingga tautan filter dapat dibagikan langsung dengan format slug yang rapi.
 
 ## Catatan Penggunaan AI (Tools & AI Policy)
 

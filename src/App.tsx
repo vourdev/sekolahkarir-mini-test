@@ -1,6 +1,6 @@
 import { useState, useMemo, useEffect, useCallback } from 'react';
 import { Department, Role } from './types/role';
-import { MOCK_ROLES, DEPARTMENTS } from './data/mockRoles';
+import { MOCK_ROLES, DEPARTMENTS, DEPARTMENT_LABELS } from './data/mockRoles';
 import { Navbar } from './components/Navbar';
 import { HeroSection } from './components/HeroSection';
 import { DepartmentFilter } from './components/DepartmentFilter';
@@ -19,7 +19,7 @@ export function App() {
         return deptParam;
       }
     }
-    return 'All';
+    return 'all';
   });
 
   const [searchQuery, setSearchQuery] = useState('');
@@ -28,7 +28,7 @@ export function App() {
 
   useEffect(() => {
     const url = new URL(window.location.href);
-    if (selectedDepartment === 'All') {
+    if (selectedDepartment === 'all') {
       url.searchParams.delete('department');
     } else {
       url.searchParams.set('department', selectedDepartment);
@@ -46,14 +46,15 @@ export function App() {
   const filteredRoles = useMemo(() => {
     return MOCK_ROLES.filter((role) => {
       const matchesDepartment =
-        selectedDepartment === 'All' || role.department === selectedDepartment;
+        selectedDepartment === 'all' || role.department === selectedDepartment;
 
       const query = searchQuery.trim().toLowerCase();
       const matchesSearch =
         !query ||
         role.title.toLowerCase().includes(query) ||
         role.description.toLowerCase().includes(query) ||
-        role.department.toLowerCase().includes(query) ||
+        role.departmentLabel.toLowerCase().includes(query) ||
+        role.department.includes(query) ||
         role.skills.some((skill) => skill.toLowerCase().includes(query));
 
       return matchesDepartment && matchesSearch;
@@ -62,12 +63,12 @@ export function App() {
 
   const departmentCounts = useMemo(() => {
     const counts: Record<Department, number> = {
-      All: MOCK_ROLES.length,
-      Engineering: 0,
-      'Product & Design': 0,
-      'Curriculum & Learning': 0,
-      'Marketing & Growth': 0,
-      'People & Operations': 0,
+      all: MOCK_ROLES.length,
+      engineering: 0,
+      product_and_design: 0,
+      curriculum_and_learning: 0,
+      marketing_and_growth: 0,
+      people_and_operations: 0,
     };
 
     MOCK_ROLES.forEach((role) => {
@@ -80,7 +81,7 @@ export function App() {
   }, []);
 
   const handleResetFilters = useCallback(() => {
-    setSelectedDepartment('All');
+    setSelectedDepartment('all');
     setSearchQuery('');
   }, []);
 
@@ -110,15 +111,15 @@ export function App() {
           <div className="flex items-center justify-between gap-3 pt-2 pb-3 border-b border-slate-200 text-xs sm:text-sm text-slate-600">
             <div>
               Menampilkan <strong>{filteredRoles.length}</strong> posisi
-              {selectedDepartment !== 'All' && (
-                <> di departemen <span className="font-semibold text-slate-800">{selectedDepartment}</span></>
+              {selectedDepartment !== 'all' && (
+                <> di departemen <span className="font-semibold text-slate-800">{DEPARTMENT_LABELS[selectedDepartment]}</span></>
               )}
               {searchQuery && (
                 <> untuk pencarian "<span className="font-semibold text-slate-800">{searchQuery}</span>"</>
               )}
             </div>
 
-            {(selectedDepartment !== 'All' || searchQuery) && (
+            {(selectedDepartment !== 'all' || searchQuery) && (
               <button
                 type="button"
                 onClick={handleResetFilters}

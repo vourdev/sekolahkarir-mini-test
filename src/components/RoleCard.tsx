@@ -14,7 +14,7 @@ export const RoleCard: React.FC<RoleCardProps> = ({ role, onViewDetails, onApply
       <div>
         <div className="flex items-center justify-between gap-2 mb-2.5">
           <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-slate-100 text-slate-700">
-            {role.department}
+            {role.departmentLabel}
           </span>
           <span className="text-[11px] text-slate-400 flex items-center gap-1">
             <Clock className="w-3 h-3" />

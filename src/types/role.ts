@@ -1,10 +1,10 @@
 export type Department =
-  | 'All'
-  | 'Engineering'
-  | 'Product & Design'
-  | 'Curriculum & Learning'
-  | 'Marketing & Growth'
-  | 'People & Operations';
+  | 'all'
+  | 'engineering'
+  | 'product_and_design'
+  | 'curriculum_and_learning'
+  | 'marketing_and_growth'
+  | 'people_and_operations';
 
 export type EmploymentType = 'Paid Internship' | 'Full-Time' | 'Part-Time' | 'Contract';
 
@@ -13,7 +13,8 @@ export type WorkLocation = 'Remote' | 'Hybrid (Jakarta)' | 'On-Site (Jakarta)';
 export interface Role {
   id: string;
   title: string;
-  department: Exclude<Department, 'All'>;
+  department: Exclude<Department, 'all'>;
+  departmentLabel: string;
   type: EmploymentType;
   location: WorkLocation;
   experienceLevel: 'Intern' | 'Entry-Level' | 'Junior';

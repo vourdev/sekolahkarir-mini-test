@@ -1,6 +1,7 @@
 import React from 'react';
 import { SearchX, RotateCcw } from 'lucide-react';
 import { Department } from '../types/role';
+import { DEPARTMENT_LABELS } from '../data/mockRoles';
 
 interface EmptyStateProps {
   selectedDepartment: Department;
@@ -13,6 +14,8 @@ export const EmptyState: React.FC<EmptyStateProps> = ({
   searchQuery,
   onResetFilters,
 }) => {
+  const departmentName = DEPARTMENT_LABELS[selectedDepartment];
+
   return (
     <div className="flex flex-col items-center justify-center py-14 px-4 text-center bg-white rounded-xl border border-dashed border-slate-300 max-w-lg mx-auto my-6">
       <div className="w-12 h-12 rounded-xl bg-slate-100 flex items-center justify-center text-slate-500 mb-3">
@@ -28,13 +31,13 @@ export const EmptyState: React.FC<EmptyStateProps> = ({
           <>
             Tidak ditemukan posisi untuk kata kunci{' '}
             <span className="font-semibold text-slate-800">"{searchQuery}"</span>
-            {selectedDepartment !== 'All' && (
-              <> pada departemen {selectedDepartment}</>
+            {selectedDepartment !== 'all' && (
+              <> pada departemen {departmentName}</>
             )}
             .
           </>
         ) : (
-          <>Belum ada posisi terbuka untuk departemen {selectedDepartment}.</>
+          <>Belum ada posisi terbuka untuk departemen {departmentName}.</>
         )}
       </p>
 

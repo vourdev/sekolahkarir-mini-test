@@ -50,7 +50,7 @@ export const RoleDetailModal: React.FC<RoleDetailModalProps> = ({
         <div className="sticky top-0 bg-white/95 backdrop-blur-xs px-5 py-4 border-b border-slate-100 flex items-start justify-between gap-3">
           <div>
             <span className="inline-block px-2 py-0.5 rounded text-xs font-medium bg-slate-100 text-slate-700 mb-1">
-              {role.department}
+              {role.departmentLabel}
             </span>
             <h2 id="modal-title" className="text-lg sm:text-xl font-bold text-slate-900">
               {role.title}
