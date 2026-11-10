@@ -1,0 +1,243 @@
+import { Role, Department } from '../types/role';
+
+export const DEPARTMENTS: { id: Department; label: string }[] = [
+  { id: 'All', label: 'Semua Departemen' },
+  { id: 'Engineering', label: 'Engineering' },
+  { id: 'Product & Design', label: 'Product & Design' },
+  { id: 'Curriculum & Learning', label: 'Curriculum & Learning' },
+  { id: 'Marketing & Growth', label: 'Marketing & Growth' },
+  { id: 'People & Operations', label: 'People & Operations' },
+];
+
+export const MOCK_ROLES: Role[] = [
+  {
+    id: 'fe-intern-01',
+    title: 'Front-End Engineer Intern',
+    department: 'Engineering',
+    type: 'Paid Internship',
+    location: 'Remote',
+    experienceLevel: 'Intern',
+    description:
+      'Membantu pengembangan antarmuka web platform Sekolah Karir dengan performa tinggi, desain responsif, dan interaktivitas modern.',
+    responsibilities: [
+      'Mengembangkan komponen antarmuka modular menggunakan React dan Tailwind CSS.',
+      'Bekerja sama dengan UI/UX Designer untuk menerjemahkan wireframe Figma ke kode yang presisi.',
+      'Mengoptimalkan performa halaman web dan memastikan kompatibilitas lintas browser dan perangkat.',
+      'Menulis unit test dan dokumentasi komponen antarmuka yang bersih.',
+    ],
+    requirements: [
+      'Mahasiswa aktif tingkat akhir atau fresh graduate di bidang Ilmu Komputer / terkait.',
+      'Memiliki pemahaman kuat tentang HTML, CSS, JavaScript ES6+, dan React.',
+      'Familiar dengan Tailwind CSS, Git, dan responsive web design.',
+      'Mampu berkomunikasi dan berkolaborasi dengan baik dalam tim agile.',
+    ],
+    skills: ['React', 'TypeScript', 'Tailwind CSS', 'Next.js', 'Git'],
+    isFeatured: true,
+    isUrgent: true,
+    postedAt: '2 hari lalu',
+  },
+  {
+    id: 'be-intern-02',
+    title: 'Back-End Engineer Intern',
+    department: 'Engineering',
+    type: 'Paid Internship',
+    location: 'Hybrid (Jakarta)',
+    experienceLevel: 'Intern',
+    description:
+      'Merancang dan membangun RESTful API serta arsitektur database yang scalable untuk mendukung ekosistem belajar Sekolah Karir.',
+    responsibilities: [
+      'Membangun endpoint API yang aman, cepat, dan teruji dengan Node.js / Go.',
+      'Mengelola query database PostgreSQL dan caching dengan Redis.',
+      'Mengintegrasikan third-party services seperti payment gateway dan email notification.',
+    ],
+    requirements: [
+      'Memahami dasar-dasar backend architecture, relational database, dan REST API.',
+      'Terbiasa dengan Node.js (Express/NestJS) atau Golang.',
+      'Mengetahui dasar-dasar deployment dan Docker adalah nilai plus.',
+    ],
+    skills: ['Node.js', 'PostgreSQL', 'REST API', 'Docker', 'Redis'],
+    isFeatured: false,
+    postedAt: '3 hari lalu',
+  },
+  {
+    id: 'qa-intern-03',
+    title: 'QA / Software Tester Intern',
+    department: 'Engineering',
+    type: 'Paid Internship',
+    location: 'Remote',
+    experienceLevel: 'Intern',
+    description:
+      'Memastikan kualitas dan reliabilitas seluruh fitur platform Sekolah Karir melalui manual dan automated testing.',
+    responsibilities: [
+      'Membuat test scenarios, test cases, dan bug reports yang komprehensif.',
+      'Melakukan regression testing dan usability testing pada rilis terbaru.',
+      'Membantu implementasi automated test menggunakan Playwright atau Cypress.',
+    ],
+    requirements: [
+      'Memiliki ketelitian tinggi dan pola pikir analitis dalam menemukan edge cases.',
+      'Memahami Software Testing Life Cycle (STLC).',
+      'Pengalaman dengan tool testing seperti Postman atau Playwright bernilai tambah.',
+    ],
+    skills: ['Postman', 'Test Scenarios', 'Bug Reporting', 'Playwright', 'Jest'],
+    isFeatured: false,
+    postedAt: '4 hari lalu',
+  },
+  {
+    id: 'uiux-intern-04',
+    title: 'UI/UX Designer Intern',
+    department: 'Product & Design',
+    type: 'Paid Internship',
+    location: 'Hybrid (Jakarta)',
+    experienceLevel: 'Intern',
+    description:
+      'Mendesain alur pengalaman belajar digital yang intuitif, inklusif, dan menyenangkan bagi ribuan pembelajar Sekolah Karir.',
+    responsibilities: [
+      'Melakukan user interview dan usability testing bersama mentor dan siswa.',
+      'Membangun user flow, wireframe low-fidelity hingga high-fidelity prototype di Figma.',
+      'Memelihara design system dan komponen reusable bersama tim engineering.',
+    ],
+    requirements: [
+      'Portofolio desain UI/UX yang menunjukkan proses berpikir dan problem-solving yang kuat.',
+      'Kemahiran tingkat lanjut dalam menggunakan Figma dan FigJam.',
+      'Pemahaman tentang design tokens, auto-layout, dan prinsip aksesibilitas (a11y).',
+    ],
+    skills: ['Figma', 'Design System', 'User Research', 'Wireframing', 'Prototyping'],
+    isFeatured: true,
+    postedAt: '1 hari lalu',
+  },
+  {
+    id: 'apm-intern-05',
+    title: 'Associate Product Manager Intern',
+    department: 'Product & Design',
+    type: 'Paid Internship',
+    location: 'Hybrid (Jakarta)',
+    experienceLevel: 'Intern',
+    description:
+      'Membantu mendefinisikan product requirements, menganalisis metrik retensi pengguna, dan mengawal eksekusi sprint produk.',
+    responsibilities: [
+      'Menulis Product Requirement Documents (PRD) yang detail dan jelas.',
+      'Menganalisis funnel pembelajaran dan perilaku user menggunakan Google Analytics / Mixpanel.',
+      'Menjadi jembatan komunikasi antara tim bisnis, kurikulum, dan tech.',
+    ],
+    requirements: [
+      'Memiliki kemampuan komunikasi terstruktur, empati pengguna, dan pemikiran data-driven.',
+      'Familiar dengan metodologi Scrum/Agile dan project management tools (Jira/Linear).',
+    ],
+    skills: ['PRD Writing', 'Product Analytics', 'Agile/Scrum', 'User Story', 'Linear'],
+    isFeatured: false,
+    postedAt: '5 hari lalu',
+  },
+  {
+    id: 'curriculum-dev-06',
+    title: 'Curriculum Developer - Tech Track',
+    department: 'Curriculum & Learning',
+    type: 'Paid Internship',
+    location: 'Remote',
+    experienceLevel: 'Junior',
+    description:
+      'Merancang modul pembelajaran teknologi yang relevan dengan kebutuhan industri kerja modern dan mudah dipahami pemula.',
+    responsibilities: [
+      'Menyusun silabus, hands-on lab, dan studi kasus proyek nyata untuk peserta bootcamp.',
+      'Mereview kualitas submission project peserta dan memberikan feedback terarah.',
+      'Memperbarui materi kurikulum agar selalu sejalan dengan tren industri tech terkini.',
+    ],
+    requirements: [
+      'Latar belakang di bidang IT / Software Engineering dengan passion mengajar.',
+      'Kemampuan menyederhanakan konsep teknis yang kompleks menjadi mudah dipahami.',
+      'Pengalaman menjadi asisten dosen, mentor coding, atau tutor adalah nilai plus.',
+    ],
+    skills: ['Curriculum Design', 'Technical Writing', 'Pedagogy', 'JavaScript', 'Python'],
+    isFeatured: true,
+    postedAt: '1 hari lalu',
+  },
+  {
+    id: 'mentor-assoc-07',
+    title: 'Learning Experience & Mentor Associate',
+    department: 'Curriculum & Learning',
+    type: 'Paid Internship',
+    location: 'Remote',
+    experienceLevel: 'Intern',
+    description:
+      'Mendampingi perjalanan belajar siswa, mengkoordinasikan sesi mentoring, serta memastikan tingkat kepuasan dan kelulusan tinggi.',
+    responsibilities: [
+      'Menjaga engagement harian di grup komunitas kelas Sekolah Karir.',
+      'Mengatur jadwal sesi 1-on-1 mentoring antara peserta dan praktisi industri.',
+      'Mengumpulkan feedback mingguan dan menyusun laporan perbaikan pengalaman belajar.',
+    ],
+    requirements: [
+      'Kemampuan interpersonal dan komunikasi publik yang hangat dan solutif.',
+      'Terbiasa mengelola Discord, Telegram, atau Slack community.',
+    ],
+    skills: ['Community Engagement', 'Student Facilitation', 'Event Management', 'Slack/Discord'],
+    isFeatured: false,
+    postedAt: '6 hari lalu',
+  },
+  {
+    id: 'growth-intern-08',
+    title: 'Social Media & Content Specialist Intern',
+    department: 'Marketing & Growth',
+    type: 'Paid Internship',
+    location: 'Hybrid (Jakarta)',
+    experienceLevel: 'Intern',
+    description:
+      'Mengembangkan konten edukasi karir yang viral, inspiratif, dan berdampak di platform Instagram, TikTok, dan LinkedIn.',
+    responsibilities: [
+      'Riset tren karir, tips CV, dan interview kerja untuk dijadikan konten harian.',
+      'Memproduksi konten short-form video (Reels & TikTok) dan carousels edukatif.',
+      'Menganalisis performa reach, engagement rate, dan konversi pendaftar program.',
+    ],
+    requirements: [
+      'Aktif di media sosial dan paham algoritma TikTok, Instagram, serta LinkedIn.',
+      'Kemampuan copywriting yang menarik, santun, dan relevan dengan audiens Gen Z.',
+      'Menguasai CapCut, Canva, atau Adobe Premiere dasar.',
+    ],
+    skills: ['Short-form Video', 'Copywriting', 'CapCut', 'Social Media Analytics', 'Canva'],
+    isFeatured: false,
+    postedAt: '3 hari lalu',
+  },
+  {
+    id: 'community-growth-09',
+    title: 'Community & Partnership Growth Intern',
+    department: 'Marketing & Growth',
+    type: 'Paid Internship',
+    location: 'Remote',
+    experienceLevel: 'Intern',
+    description:
+      'Membangun kolaborasi strategis dengan universitas, BEM, dan komunitas kampus di seluruh Indonesia untuk menyebarkan akses karir.',
+    responsibilities: [
+      'Melakukan outreach ke organisasi mahasiswa dan partner media kampus.',
+      'Menginisiasi webinar karir bersama mitra kampus dan komunitas teknologi.',
+      'Mengelola database mitra dan mengevaluasi efektivitas program kolaborasi.',
+    ],
+    requirements: [
+      'Pengalaman aktif dalam kepanitiaan atau organisasi kampus (BEM/Himpunan).',
+      'Kemampuan negosiasi, presentasi, dan jejaring relasi yang baik.',
+    ],
+    skills: ['Partnership Outreach', 'Event Planning', 'Public Relations', 'Negotiation'],
+    isFeatured: false,
+    postedAt: '4 hari lalu',
+  },
+  {
+    id: 'talent-ops-10',
+    title: 'Talent Acquisition & People Operations Intern',
+    department: 'People & Operations',
+    type: 'Paid Internship',
+    location: 'Hybrid (Jakarta)',
+    experienceLevel: 'Intern',
+    description:
+      'Mendukung operasional rekrutmen batch internship, onboarding talent baru, serta mengelola data administrasi internal perusahaan.',
+    responsibilities: [
+      'Membantu screening berkas pelamar dan penjadwalan interview kandidat.',
+      'Mempersiapkan proses onboarding dan administrasi kontrak internship.',
+      'Mendukung inisiatif employee engagement dan kegiatan bonding internal.',
+    ],
+    requirements: [
+      'Mahasiswa jurusan Psikologi, Manajemen SDM, atau bidang terkait.',
+      'Memahami proses rekrutmen dasar dan etika penanganan data pribadi.',
+      'Kemampuan organisasi yang rapi dan teliti mengelola spreadsheet.',
+    ],
+    skills: ['Candidate Screening', 'HR Operations', 'Google Workspace', 'Communication'],
+    isFeatured: false,
+    postedAt: '5 hari lalu',
+  },
+];
